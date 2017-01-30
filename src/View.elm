@@ -65,10 +65,10 @@ earthImage earthData =
 
 fetchedEarthView : EarthData -> Html Msg
 fetchedEarthView earthData =
-    div [ class "earth w-100 cf full vertical-center" ]
+    div [ class "earth w-100 cf full vertical-center-not-small" ]
         [ div [ class "fl w-40-l w-100 fade-in" ]
             [ h1 [ class "f1 mb0 tr" ] [ text "Earth from Space" ]
-            , p [ class "f3 text-lightgray tr mono" ] [ text (formatDate earthData.date) ]
+            , p [ class "f3 mb0 text-lightgray tr mono" ] [ text (formatDate earthData.date) ]
             ]
         , div [ class "fl w-60-l w-100" ]
             [ earthImage earthData
