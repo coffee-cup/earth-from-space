@@ -53,11 +53,11 @@ footer =
         ]
 
 
-earthImage : EarthId -> Html Msg
-earthImage earthId =
+earthImage : EarthData -> Html Msg
+earthImage earthData =
     let
         imageUrl =
-            createEarthLink earthId
+            createEarthLink earthData.earthId earthData.date
     in
         div [ class "earth-image fade-in" ]
             [ img [ src imageUrl ] [] ]
@@ -71,7 +71,7 @@ fetchedEarthView earthData =
             , p [ class "f3 text-lightgray tr mono" ] [ text (formatDate earthData.date) ]
             ]
         , div [ class "fl w-60-l w-100" ]
-            [ earthImage earthData.earthId
+            [ earthImage earthData
             ]
         ]
 
