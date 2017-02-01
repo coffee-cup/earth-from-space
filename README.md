@@ -1,8 +1,8 @@
 # Earth from Space 🌎
 
-Daily images of the earth... from space!
+Daily images of the earth... from space! [Click Me 🎉](http://theearthfrom.space)
 
-![earth](https://epic.gsfc.nasa.gov/archive/natural/2017/01/30/jpg/epic_1b_20170130125413_01.jpg).
+![earth](https://epic.gsfc.nasa.gov/archive/natural/2017/01/30/jpg/epic_1b_20170130125413_01.jpg)
 
 ## Features 💥
 
