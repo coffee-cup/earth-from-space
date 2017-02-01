@@ -1,6 +1,8 @@
-# elm-template
+# Earth from Space 🌎
 
-This is a simple static website template using [Elm](http://elm-lang.org). [Here is an example of this template](https://coffee-cup-elm-template.surge.sh/).
+Daily images of the earth... from space!
+
+![earth](https://epic.gsfc.nasa.gov/archive/natural/2017/01/30/jpg/epic_1b_20170130125413_01.jpg).
 
 ## Features 💥
 
