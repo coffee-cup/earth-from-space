@@ -1,6 +1,6 @@
 module Models exposing (..)
 
-import Date exposing (Date, now)
+import Array exposing (Array)
 import Routing exposing (Sitemap)
 
 
@@ -13,23 +13,20 @@ type alias EarthId =
 
 
 type alias EarthData =
-    { date : Date
+    { date : String
     , earthId : EarthId
     }
-
-
-initEarthData : EarthData
-initEarthData =
-    EarthData (Date.fromTime 0) "epic_1b_20170128005515_01"
 
 
 type Status
     = Loading
     | Fetched
+    | Error
 
 
 type alias Model =
-    { earthData : EarthData
+    { earthDatas : Array EarthData
+    , index : Int
     , status : Status
     , route : Sitemap
     }
@@ -37,7 +34,18 @@ type alias Model =
 
 initialModel : Sitemap -> Model
 initialModel sitemap =
-    { earthData = initEarthData
+    { earthDatas = Array.fromList []
+    , index = 0
     , status = Loading
     , route = sitemap
     }
+
+
+currentEarth : Int -> Array EarthData -> EarthData
+currentEarth index earthDatas =
+    let
+        modIndex =
+            index % (Array.length earthDatas)
+    in
+        Array.get modIndex earthDatas
+            |> Maybe.withDefault (EarthData "" "")

@@ -21,6 +21,7 @@ collectionDecoder =
 
 memberDecoder : Decode.Decoder EarthData
 memberDecoder =
-    Decode.map2 EarthData
-        (field "date" date)
+    Decode.map2
+        EarthData
+        (field "date" Decode.string)
         (field "image" Decode.string)

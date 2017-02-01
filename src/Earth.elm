@@ -2,12 +2,15 @@ module Earth exposing (..)
 
 import Date exposing (Date)
 import Models exposing (Url, EarthId)
-import Utils exposing (monthToNumber)
+import Utils exposing (stringToDate, monthToNumber)
 
 
-createEarthLink : EarthId -> Date -> Url
-createEarthLink earthId date =
+createEarthLink : EarthId -> String -> Url
+createEarthLink earthId dateString =
     let
+        date =
+            stringToDate dateString
+
         year =
             Date.year date
 

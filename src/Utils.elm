@@ -21,9 +21,21 @@ boolToInt b =
             0
 
 
-formatDate : Date -> String
-formatDate date =
+stringToDate : String -> Date
+stringToDate s =
+    s
+        |> String.split "-"
+        |> String.join "/"
+        |> Date.fromString
+        |> Result.withDefault (Date.fromTime 0)
+
+
+formatDate : String -> String
+formatDate dateString =
     let
+        date =
+            stringToDate dateString
+
         year =
             Date.year date
 

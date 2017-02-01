@@ -1,5 +1,6 @@
 module View exposing (..)
 
+import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (class, href, classList, src)
 import Html.Events exposing (onClick)
@@ -54,24 +55,29 @@ footer =
 
 
 earthImage : EarthData -> Html Msg
-earthImage earthData =
+earthImage earth =
     let
         imageUrl =
-            createEarthLink earthData.earthId earthData.date
+            createEarthLink earth.earthId earth.date
     in
         div [ class "earth-image fade-in" ]
             [ img [ src imageUrl ] [] ]
 
 
+earthTime : EarthData -> Html Msg
+earthTime earth =
+    p [ class "f3 mb0 text-lightgray tr mono" ] [ text (formatDate earth.date) ]
+
+
 fetchedEarthView : EarthData -> Html Msg
-fetchedEarthView earthData =
+fetchedEarthView earth =
     div [ class "earth w-100 cf full vertical-center-not-small" ]
         [ div [ class "fl w-40-l w-100 fade-in" ]
             [ h1 [ class "f1 mb0 tr" ] [ text "Earth from Space" ]
-            , p [ class "f3 mb0 text-lightgray tr mono" ] [ text (formatDate earthData.date) ]
+            , earthTime earth
             ]
         , div [ class "fl w-60-l w-100" ]
-            [ earthImage earthData
+            [ earthImage earth
             ]
         ]
 
@@ -83,6 +89,16 @@ earthLoader =
         ]
 
 
+earthError : Html Msg
+earthError =
+    div [ class "vertical-center full" ]
+        [ div [ class "vertical-wrapper" ]
+            [ h2 [ class "f2 tc" ] [ text "ಥ_ಥ" ]
+            , a [ href "/", class "text-lightgray f4 su-colour" ] [ text "There was a problem fetching the images." ]
+            ]
+        ]
+
+
 getEarthView : Model -> Html Msg
 getEarthView model =
     case model.status of
@@ -90,7 +106,14 @@ getEarthView model =
             earthLoader
 
         Fetched ->
-            fetchedEarthView model.earthData
+            let
+                earth =
+                    currentEarth model.index model.earthDatas
+            in
+                fetchedEarthView earth
+
+        Error ->
+            earthError
 
 
 
