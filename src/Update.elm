@@ -41,6 +41,9 @@ update msg model =
         ShowAbout ->
             ( model, changePage AboutRoute )
 
+        Spin _ ->
+            ( { model | index = (model.index + 1) % (Array.length model.earthDatas) }, Cmd.none )
+
         OnFetchNatural (Ok allEarthDatas) ->
             ( { model | earthDatas = Array.fromList allEarthDatas, status = Fetched }, Cmd.none )
 
