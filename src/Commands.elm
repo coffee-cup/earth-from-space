@@ -2,7 +2,6 @@ module Commands exposing (..)
 
 import Http
 import Json.Decode as Decode exposing (field)
-import Json.Decode.Extra exposing (date)
 import Models exposing (Url, EarthData)
 import Messages exposing (..)
 import Earth exposing (..)

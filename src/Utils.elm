@@ -60,7 +60,7 @@ formatDate dateString =
             ++ (toString month)
             ++ " "
             ++ (toString year)
-            ++ " , "
+            ++ ", "
             ++ (padTime hour)
             ++ ":"
             ++ (padTime minute)
