@@ -1,6 +1,5 @@
 module View exposing (..)
 
-import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (class, href, classList, src)
 import Html.Events exposing (onClick)
