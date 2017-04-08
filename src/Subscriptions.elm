@@ -7,4 +7,4 @@ import Messages exposing (Msg(..))
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Time.every (second * 5) Spin
+    Time.every (second * 2) Spin
