@@ -7,16 +7,22 @@
     "build": "NODE_ENV=production webpack -p --progress",
     "dev": "NODE_ENV=development webpack-dev-server --hot --inline --progress",
     "start": "npm run dev",
-    "copy": "cp -r public/* build; cp public/index.html build/200.html; cp public/index.html build/404.html",
+    "copy":
+      "cp -r public/* build; cp public/index.html build/200.html; cp public/index.html build/404.html",
     "clean": "rimraf build",
     "prebuild": "npm run clean",
     "postbuild": "npm run copy",
     "predeploy": "npm run build",
     "deploy": "surge build/ theearthfrom.space",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Jake Runzer <jakerunzer@gmail.com> (https://jakerunzer.xyz)",
   "license": "MIT",
+  "engines": {
+    "node": ">=8.6.0",
+    "npm": ">=5.3.0"
+  },
   "dependencies": {
     "json-server": "^0.9.4",
     "normalize-css": "^2.3.1",
